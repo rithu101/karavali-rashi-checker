@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ಕರಾವಳಿ ರಾಶಿ ನಕ್ಷತ್ರ ಪರಿಶೀಲನೆ</title>
+  <title>ಕರಾವË3ಿ ರಾಶಿ ನಕ್ಷತ್ರ ಪರಿಶೀಲನೆ</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada&display=swap" rel="stylesheet">
   <style>
     body {
@@ -62,7 +62,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>ರಾಶಿ ಮತ್ತು ನಕ್ಷತ್ರ ಪರಿಶೀಲನೆ</h1>
+    <h1>ರಾಶಿ ಮತ್ತು ನಕ್ಷತ್ರ ಪರಿಶೀಲಿ</h1>
 
     <label for="dob">ಹುಟ್ಟಿದ ದಿನಾಂಕ:</label>
     <input type="date" id="dob">
@@ -71,7 +71,7 @@
     <input type="time" id="time">
 
     <label for="place">ಹುಟ್ಟಿದ ಸ್ಥಳ:</label>
-    <input type="text" id="place" placeholder="ಉದಾಹರಣೆ: ಉಡುಪಿ">
+    <input type="text" id="place" placeholder="ಉದಾಹರಿಣೆ: ಉಡುಪಿ">
 
     <button onclick="checkAstrology()">ಪರಿಶೀಲಿಸಿ</button>
 
@@ -79,28 +79,38 @@
   </div>
 
   <script>
-    function checkAstrology() {
+    async function checkAstrology() {
       const dob = document.getElementById('dob').value;
       const time = document.getElementById('time').value;
       const place = document.getElementById('place').value.trim();
 
       if (!dob || !time || !place) {
-        document.getElementById('result').innerHTML = "ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಮಾಹಿತಿಯನ್ನು ಪೂರೈಸಿ.";
+        document.getElementById('result').innerHTML = "ದಯವಿಟು ಎಲ್ಲಾ ಮಾಹಿತಿಯನ್ನು ಪೂರೈಸಿ.
+        <br>ಪ್ಲೀಸ್ ಪೂರ್Ê3 ಮಾಡಿ.";
         return;
       }
 
-      // Placeholder astrology logic – this will be replaced with real calculations later
-      const dummyRashi = "ಕನ್ಯಾ ರಾಶಿ";
-      const dummyNakshatra = "ಉತ್ತರ ಫಾಲ್ಗುಣಿ";
-      const dummyDasha = "ಬುಧ ಮಹಾದಶೆ ಪ್ರಾರಂಭ";
+      const [year, month, day] = dob.split('-').map(Number);
+      const [hour, minute] = time.split(':').map(Number);
 
-      const result = `
-        <strong>ಹುಟ್ಟಿದ ಸ್ಥಳ:</strong> ${place}<br>
-        <strong>ರಾಶಿ:</strong> ${dummyRashi}<br>
-        <strong>ನಕ್ಷತ್ರ:</strong> ${dummyNakshatra}<br>
-        <strong>ದಶಾ:</strong> ${dummyDasha}
+      const jd = 367 * year - Math.floor((7 * (year + Math.floor((month + 9) / 12))) / 4)
+                + Math.floor((275 * month) / 9) + day + 1721013.5
+                + (hour + minute / 60) / 24 - 0.5;
+
+      const moonLongitude = (jd * 13.1763966) % 360;
+      const rashiIndex = Math.floor(moonLongitude / 30);
+      const rashiList = ["ಮೇಷ", "ವೃಷಭ", "ಮಿಥುನ", "ಕಟಕ", "ಸಿಂಹ", "ಕನ್ಯಾ", "ತುಲಾ", "ವೃಶ್ಚಿಕ", "ಧನು", "ಮಕರ", "ಕುಂಭ", "ಮೀನ"];
+      const nakshatraIndex = Math.floor((moonLongitude % 360) / (360 / 27));
+      const nakshatraList = ["ಅಶ್ವಿನಿ", "ಭರಣಿ", "ಕೃತಿಕ", "ರೋಹಿಣಿ", "ಮೃಗಶಿರ", "ಆರ್ದ್ರ", "ಪುನರ್ವಸು", "ಪುಷ್ಯ", "ಆಶ್ಲೇಷ", "ಮಖ", "ಪೂರ್ವಫಲ್ಗುಣಿ", "ಉತ್ತರಫಲ್ಗುಣಿ",
+        "ಹಸ್ತ", "ಚಿತ್ತ", "ಸ್ವಾತಿ", "ವಿಶಾಖಾ", "ಅನೂರಾಧಾ", "ಜ್ಯೇಷ್ಠಾ", "ಮೂಲ", "ಪೂರ್ವಾಷಾಢ", "ಉತ್ತರಾಷಾಢ", "ಶ್ರವಣ", "ಧನಿಷ್ಠಾ", "ಶತಭಿಷ", "ಪೂರ್ವಭಾದ್ರ", "ಉತ್ತರಭಾದ್ರ", "ರೇವತಿ"];
+
+      const rashi = rashiList[rashiIndex];
+      const nakshatra = nakshatraList[nakshatraIndex];
+
+      document.getElementById('result').innerHTML = `
+        <strong>ರಾಶಿ:</strong> ${rashi}<br>
+        <strong>ನಕÍಷತ್ರ:</strong> ${nakshatra}
       `;
-      document.getElementById('result').innerHTML = result;
     }
   </script>
 </body>
