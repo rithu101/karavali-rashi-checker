@@ -1,1 +1,107 @@
-testing
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ಕರಾವಳಿ ರಾಶಿ ನಕ್ಷತ್ರ ಪರಿಶೀಲನೆ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans Kannada', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fff);
+      margin: 0;
+      padding: 2rem;
+      color: #004d40;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #ffffffcc;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #004d40;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004d40;
+    }
+    #result {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #e0f2f1;
+      border-radius: 10px;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ರಾಶಿ ಮತ್ತು ನಕ್ಷತ್ರ ಪರಿಶೀಲನೆ</h1>
+
+    <label for="dob">ಹುಟ್ಟಿದ ದಿನಾಂಕ:</label>
+    <input type="date" id="dob">
+
+    <label for="time">ಹುಟ್ಟಿದ ಸಮಯ:</label>
+    <input type="time" id="time">
+
+    <label for="place">ಹುಟ್ಟಿದ ಸ್ಥಳ:</label>
+    <input type="text" id="place" placeholder="ಉದಾಹರಣೆ: ಉಡುಪಿ">
+
+    <button onclick="checkAstrology()">ಪರಿಶೀಲಿಸಿ</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function checkAstrology() {
+      const dob = document.getElementById('dob').value;
+      const time = document.getElementById('time').value;
+      const place = document.getElementById('place').value.trim();
+
+      if (!dob || !time || !place) {
+        document.getElementById('result').innerHTML = "ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಮಾಹಿತಿಯನ್ನು ಪೂರೈಸಿ.";
+        return;
+      }
+
+      // Placeholder astrology logic – this will be replaced with real calculations later
+      const dummyRashi = "ಕನ್ಯಾ ರಾಶಿ";
+      const dummyNakshatra = "ಉತ್ತರ ಫಾಲ್ಗುಣಿ";
+      const dummyDasha = "ಬುಧ ಮಹಾದಶೆ ಪ್ರಾರಂಭ";
+
+      const result = `
+        <strong>ಹುಟ್ಟಿದ ಸ್ಥಳ:</strong> ${place}<br>
+        <strong>ರಾಶಿ:</strong> ${dummyRashi}<br>
+        <strong>ನಕ್ಷತ್ರ:</strong> ${dummyNakshatra}<br>
+        <strong>ದಶಾ:</strong> ${dummyDasha}
+      `;
+      document.getElementById('result').innerHTML = result;
+    }
+  </script>
+</body>
+</html>
