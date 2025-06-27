@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ಕರಾವಳಿ ರಾಶಿ, ನಕ್ಷತ್ರ ಮತ್ತು ದಶಾ ಪರಿಶೀಲಕ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada&display=swap" rel="stylesheet" />
+<style>
+  body {
+    font-family: 'Noto Sans Kannada', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #a8d5f2, #f0f8ff);
+    margin: 0; padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 10px;
+  }
+  .container {
+    background: #ffffffcc;
+    border-radius: 15px;
+    padding: 25px 20px 40px 20px;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0,77,64,0.4);
+    position: relative;
+  }
+  h1 {
+    color: #004d40;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #66bb6a99;
+  }
+  label {
+    font-weight: 600;
+    margin-top: 15px;
+    display: block;
+    color: #00796b;
+  }
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    border: 2px solid #004d40;
+    transition: border-color 0.3s ease;
+    outline: none;
+  }
+  input:focus {
+    border-color: #66bb6a;
+    box-shadow: 0 0 5px #66bb6aaa;
+  }
+  button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px 0;
+    background-color: #004d40;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 5px 10px #00796b88;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #00796b;
+  }
+  #result, #details, #dasha {
+    margin-top: 25px;
+    background: #e0f2f1;
+    border-radius: 12px;
+    padding: 20px 18px;
+    color: #004d40;
+    font-size: 1.15em;
+    line-height: 1.4;
+    box-shadow: inset 0 0 10px #b2dfdbaa;
+  }
+  #details h3, #dasha h3 {
+    margin-top: 0;
+    font-weight: 700;
+    border-bottom: 2px solid #004d40;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  @media(max-width: 520px) {
+    body {
+      padding: 15px 5px;
+    }
+    .container {
+      padding: 20px 15px 35px 15px;
+    }
+  }
+  .footer-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: url('https://i.ibb.co/3hTzD9Q/wave.png') repeat-x bottom;
+    background-size: contain;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="ರಾಶಿ ನಕ್ಷತ್ರ ದಶಾ ಪರಿಶೀಲಕ">
+    <h1>ಕರಾವಳಿ ರಾಶಿ, ನಕ್ಷತ್ರ ಮತ್ತು ದಶಾ ಪರಿಶೀಲಕ</h1>
+    <label for="dob">ಹುಟ್ಟಿದ ದಿನಾಂಕ:</label>
+    <input type="date" id="dob" aria-required="true" />
+    <label for="time">ಹುಟ್ಟಿದ ಸಮಯ:</label>
+    <input type="time" id="time" aria-required="true" />
+    <label for="place">ಹುಟ್ಟಿದ ಸ್ಥಳ:</label>
+    <input type="text" id="place" placeholder="ಉದಪಿ" aria-required="true" />
+    <button onclick="alert('Astrology logic will be added here.')">ಪರಿಶೀಲಿಸಿ</button>
+    <div id="result" aria-live="polite"></div>
+    <div id="details"></div>
+    <div id="dasha"></div>
+    <div class="footer-wave" aria-hidden="true"></div>
+  </div>
+</body>
+</html>
